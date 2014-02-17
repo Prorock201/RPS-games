@@ -1,24 +1,40 @@
 window.onload = bindEventHandlers;
-
 var userData = "";
 var computerData = "";
 
-function bindEventHandlers () {
+function bindEventHandlers() {
 	var userControl = document.querySelectorAll(".control > div");
 	for (var i=0; i < userControl.length; i++) {
-		/*userControl[i].removeEventListener ("click", startBatlle, false);*/
 		userControl[i].addEventListener ("click", startBatlle, false);
 	}
-	/*var animationObject = document.querySelectorAll(".content > div");
-	for (var i=0; i < animationObject.length; i++) {
-		animationObject[i].classList.remove('animation');
-	}*/
 }
 
-function startBatlle (event) {
-	/*removeClass();*/
-	var userSelection = event.currentTarget.innerText;
-	userData = userSelection;
+function startBatlle(event) {
+	clearStartPosition();
+	formPlayersChoice(event);
+	showAnimation();
+	setTimeout(showResult,3000);
+}
+
+function clearStartPosition() {
+	var computerImage = document.querySelectorAll(".content__left > img");
+	for (var i=0; i < computerImage.length; i++) {
+		computerImage[i].style.display = "none";
+		computerImage[0].style.display = "block";
+	}
+	var userImage = document.querySelectorAll(".content__right > img");
+	for (var j=0; j < userImage.length; j++) {
+		userImage[j].style.display = "none";
+		userImage[0].style.display = "block";
+	}
+	var animationObject = document.querySelectorAll(".content > div");
+	for (var i=0; i < animationObject.length; i++) {
+		animationObject[i].classList.remove('animation');
+	}
+}
+
+function formPlayersChoice(event) {
+	userData = event.currentTarget.innerText;
 	switch (getRandom (1, 3)) {
 		case 1:
 			computerData = "rock";
@@ -28,84 +44,52 @@ function startBatlle (event) {
 			break;
 		case 3:
 			computerData = "scissors";
-		}	
-	showAnimation();
-	setTimeout(showResult,3000);
+	}	
 }	
 
-/*function removeClass() {
-	var animationObject = document.querySelectorAll(".content > div");
-	for (var i=0; i < animationObject.length; i++) {
-		animationObject[i].className -= " animation";
-	}*/
-
-function getRandom (min, max) {
+function getRandom(min, max) {
   	return Math.floor(Math.random() * (max + 1 - min) + min);
 }
 
 function showAnimation() {
+	var counter = document.getElementsByTagName("span")[0];
+	var z = 1;
+	counter.innerText = z;
+	setCounter = setInterval(function() {
+		z++;
+		counter.innerText = z;
+	}, 1000);
 	var animationObject = document.querySelectorAll(".content > div");
 	for (var i=0; i < animationObject.length; i++) {
 		animationObject[i].classList.add('animation');
 	}
-	var count = document.getElementsByTagName("span")[0];
-	setTimeout(function() {
-		for (var z=1; z<4; z++) {
-			setTimeout(function() {
-				
-				count.innerText = z;
-			}, 1000);
-		}
-	}, 1000);
-		
-	
-
-	/*for (var i=0; i < animationObject.length; i++) {
-		if (animationObject[i].className == "content__left animation") {
-			animationObject[i].classList.remove('animation');
-		} else {
-			animationObject[i].className += " animation";
-		}
-	}
-*/
-	/*function removeClass () {
-		if ()
-	}*/
-	/*var count = document.getElementsByTagName("span")[0];
-	var z = 1;
-	while ( z < 3) {
-		console.log(z);
-		count.innerHTML = z;
-		z++;
-	}
-	do {
-		console.log(z);
-		count.innerHTML = z;
-		z++;
-	} while (z < 3);*/
 }
+
 function showResult ()	{
-	var computerImage = document.getElementsByClassName("content__left")[0];
+	clearInterval(setCounter);
+	var computerImage = document.querySelectorAll(".content__left > img");
+	computerImage[0].style.display = "none";
 	switch (computerData) {
 		case "rock":
-			computerImage.innerHTML = "<img src=\"rock.png\">";
+			computerImage[1].style.display = "block";
 			break;
 		case "paper":
-			computerImage.innerHTML = "<img src=\"paper.png\">";
+			computerImage[2].style.display = "block";
 			break;
 		case "scissors":
-			computerImage.innerHTML = "<img src=\"scissors.png\">";
+			computerImage[3].style.display = "block";
 	}
-	var userImage = document.getElementsByClassName("content__right")[0];
+	var userImage = document.querySelectorAll(".content__right > img");
+	userImage[0].style.display = "none";
 	switch (userData) {
 		case "rock":
-			userImage.innerHTML = "<img src=\"rock.png\">";
+			userImage[1].style.display = "block";
 			break;
 		case "paper":
-			userImage.innerHTML = "<img src=\"paper.png\">";
+			userImage[2].style.display = "block";
 			break;
 		case "scissors":
-			userImage.innerHTML = "<img src=\"scissors.png\">";
+			userImage[3].style.display = "block";
 	}
 	var resultImage = document.getElementsByClassName("content__middle")[0];
 	if ( userData == computerData) {
@@ -120,6 +104,3 @@ function showResult ()	{
 		resultImage.innerText = "You Lose!";
 	}
 }
-
-	
-
