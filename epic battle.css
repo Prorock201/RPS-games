@@ -1,0 +1,118 @@
+.inside {
+ width: 1000px;
+ height: 600px;
+ margin-top: 50px;
+ margin-left: 150px;
+ margin-right: 50px;
+}
+
+.head div {
+ width: 350px;
+ padding-bottom: 10px;
+ text-align: center;
+ font-family: Arial;
+ font-size: 19pt;
+ color: #D21250;
+ border-bottom: 1px solid #00ACE9;
+}
+
+.head__player1 {
+ float: left;
+}
+
+.head__player2 {
+ float: right;
+}
+
+.content {
+ width: 100%;
+ margin-top: 100px;
+ position: relative;
+ float: left;
+}
+
+.content__left {
+ float: left;
+}
+
+.content__middle {
+ width: 294px;
+ height: 200px;
+ margin-top: 15px;
+ left: 350px;
+ text-align: center;
+ font-family: Arial;
+ font-size: 24pt;
+ color: #0F997F;
+ position: absolute;
+}
+
+.content__right {
+ float: right;
+}
+
+.control {
+ margin-top: 450px;
+ margin-left: 663px;
+ position: absolute;
+}
+
+.control div {
+ width: 100px;
+ height: 35px;
+ margin-right: 10px;
+ padding-top: 10px;
+ text-align: center;
+ font-size: 15pt;
+ font-family: Arial;
+ color: #1D1A71;	
+ background-color: #00ACE9;
+ float: left;
+}
+
+/*4 frames*/
+/*@-webkit-keyframes bounce{
+ 0%,50%,100%{margin-top:0px;}
+ 25%,75%{margin-top:-30px;}
+}
+@keyframes bounce{
+ 0%,50%,100%{margin-top:0px;}
+ 25%,75%{margin-top:-30px;}
+}*/
+
+/*7 frames*/
+/*@-webkit-keyframes bounce{
+ 0%,30%,60%,90%{margin-top:0px;}
+ 15%,45%,75%{margin-top:-30px;}
+ 100%{margin-top:-20px;}
+}
+@keyframes bounce{
+ 0%,30%,60%,90%{margin-top:0px;}
+ 15%,45%,75%{margin-top:-30px;}
+ 100%{margin-top:-20px;}
+}*/
+
+/*10 frames*/
+@-webkit-keyframes bounce{
+ 0%,20%,40%,60%,80%,100%{margin-top:0px;}
+ 10%,30%,50%,70%,90%{margin-top:-30px;}
+}
+@keyframes bounce{
+ 0%,20%,40%,60%,80%,100%{margin-top:0px;}
+ 10%,30%,50%,70%,90%{margin-top:-30px;}
+}
+
+.animation{
+ animation:bounce 3s;
+ -webkit-animation:bounce 3s;
+}
+
+
+
+
+
+
+
+
+
+
